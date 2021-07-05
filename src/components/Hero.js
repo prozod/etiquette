@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import {
   HeroContainer,
   HeroMotto,
@@ -8,32 +8,49 @@ import {
 import Etiquette from "../videos/etiquettepxl.mp4";
 import Button from "./Button";
 import { Instagram, Twitter, MessageCircle } from "react-feather";
+import { gsap, Power3 } from "gsap";
 
 export default function Hero() {
+  let heroFadeIn = useRef(null);
+
+  useEffect(() => {
+    gsap.to(heroFadeIn, {
+      duration: 0.5,
+      y: 0,
+      opacity: 1,
+      ease: Power3.easeIn,
+      delay: 0.2,
+    });
+  }, []);
+
   return (
     <HeroContainer>
       <HeroMotto>
-        <p>
+        <p
+          ref={(el) => {
+            heroFadeIn = el;
+          }}
+        >
           Fresh accessories for a <br />
           brand new season.
         </p>
         <Button>OUR COLLECTION</Button>
       </HeroMotto>
       <HeroSocials>
-        <span>
+        <a href="/" target="_blank">
           <MessageCircle />
-        </span>
+        </a>
         <div></div>
-        <span>
+        <a href="/" target="_blank">
           <Twitter />
-        </span>
+        </a>
         <div></div>
-        <span>
+        <a href="/" target="_blank">
           <Instagram />
-        </span>
+        </a>
       </HeroSocials>
       <HeroBackground>
-        <video autoPlay loop muted>
+        <video width="100%" autoPlay loop muted>
           <source src={Etiquette} type="video/mp4" />
         </video>
       </HeroBackground>

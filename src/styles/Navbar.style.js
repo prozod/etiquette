@@ -9,7 +9,9 @@ export const Nav = styled.nav`
   justify-content: center;
   align-items: flex-start;
   font-family: "Work Sans", sans-serif;
-  z-index: 30;
+  z-index: 15;
+  opacity: 0;
+  transform: translateY(-150px);
 `;
 
 export const NavItems = styled.div`
@@ -17,28 +19,10 @@ export const NavItems = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
-`;
+  padding: 25px 0px;
 
-export const MenuItems = styled.div`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex: 1;
-`;
-
-export const Item = styled.p`
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-  color: white;
-
-  &:nth-child(-n + 3) {
-    margin-right: 2em;
-  }
-
-  &:hover {
-    cursor: pointer;
+  @media (max-width: 990px) {
+    width: 90%;
   }
 `;
 
@@ -50,6 +34,12 @@ export const Logo = styled.h3`
   text-align: center;
   font-family: "Prata", serif;
   font-size: 2.4rem;
+  width: fit-content;
+
+  @media (max-width: 990px) {
+    font-size: 1.8rem;
+    flex: 0;
+  }
 `;
 
 export const NavButtons = styled.div`
@@ -65,6 +55,10 @@ export const ButtonContainer = styled.div`
   width: 250px;
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 990px) {
+    display: none;
+  }
 
   &:hover {
     cursor: pointer;
