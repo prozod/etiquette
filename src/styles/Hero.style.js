@@ -46,10 +46,32 @@ export const HeroMotto = styled.div`
     margin-top: 3em;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: relative;
+
+    &:before {
+      content: "";
+      background-color: white;
+      width: 0%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.2s ease-in-out;
+    }
 
     &:hover {
-      background: white;
-      color: #202020;
+      color: black;
+      transition-delay: 0.2s;
     }
   }
 `;

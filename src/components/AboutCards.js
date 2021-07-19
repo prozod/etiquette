@@ -15,6 +15,7 @@ const ContainerContent = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1;
   margin: 0 auto;
+  flex: 1;
 
   @media (max-width: 990px) {
     grid-template-columns: repeat(1, 1fr);
@@ -30,17 +31,23 @@ const Card = styled.div`
   align-items: center;
   background-color: ${({ bgColor }) => bgColor};
 
+  @media (max-width: 990px) {
+    padding: 2em 0;
+  }
+
   div {
     width: 55%;
     text-align: center;
 
     @media (max-width: 990px) {
-      width: 90%;
+      width: 80%;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
 
-    @media (max-width: 1300px) {
-      width: 80%;
-    }
+    /* @media (max-width: 1300px) {
+      width: 75%;
+    } */
   }
 
   h3 {

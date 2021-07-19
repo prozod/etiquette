@@ -34,7 +34,9 @@ export default function Hero() {
           Fresh accessories for a <br />
           brand new season.
         </p>
-        <Button>OUR COLLECTION</Button>
+        <Button color="white" background="transparent" border="2px solid white">
+          OUR COLLECTION
+        </Button>
       </HeroMotto>
       <HeroSocials>
         <a href="/" target="_blank">

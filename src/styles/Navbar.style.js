@@ -33,7 +33,8 @@ export const Logo = styled.h3`
   color: white;
   text-align: center;
   font-family: "Prata", serif;
-  font-size: 2.4rem;
+  font-weight: 200;
+  font-size: 2.5rem;
   width: fit-content;
 
   @media (max-width: 990px) {
