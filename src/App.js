@@ -11,6 +11,7 @@ import footer from "./images/footer.jpg";
 import Footer from "./components/Footer";
 import Shop from "./components/Shop/Shop";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   return (
@@ -52,7 +53,7 @@ function App() {
 
           <Route path="/shop">
             <NavContainer
-              position="relative"
+              position="absolute"
               logoColor="black"
               rightIcons="black"
               leftIcons="black"
@@ -66,6 +67,27 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <CookieConsent
+        // debug={true}
+        buttonText="OK"
+        cookieName="cookie-consent"
+        sameSite="strict"
+        style={{ background: "#ffffff", color: "black", padding: "0 2em" }}
+        buttonStyle={{
+          color: "black",
+          background: "#ffffff",
+          border: "1px solid black",
+          fontSize: "1rem",
+          minWidth: "150px",
+          padding: "10px",
+          fontWeight: "bold",
+        }}
+        expires={60}
+      >
+        This page uses cookies to provide necessary site functionality and
+        improve your experience. By using this website, you agree to our privacy
+        policy and our cookie policy.
+      </CookieConsent>
     </Router>
   );
 }

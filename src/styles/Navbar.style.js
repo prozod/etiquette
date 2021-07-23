@@ -12,22 +12,32 @@ export const Nav = styled.nav`
   z-index: 15;
   opacity: 0;
   transform: translateY(-150px);
+  transform: translate3d(0, -100%, 0);
 
   &.scroll_down {
     transition: all 0.3s ease-in-out;
     position: fixed;
     background-color: rgba(255, 255, 255, 1);
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
 
     @media (max-width: 990px) {
       position: absolute;
+      background-color: transparent;
     }
 
     a {
       color: black;
+      @media (max-width: 990px) {
+        color: white;
+      }
     }
 
     .anchortag {
       color: black;
+
+      @media (max-width: 990px) {
+        color: white;
+      }
 
       &::after {
         content: "";

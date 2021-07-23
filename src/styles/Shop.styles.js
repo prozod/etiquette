@@ -7,6 +7,7 @@ export const Container = styled.section`
   margin: 0 auto;
   width: 60%;
   font-family: "Work Sans", sans-serif;
+  margin-top: 104px;
 
   @media (max-width: 1024px) {
     width: 90%;
