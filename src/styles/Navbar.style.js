@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  position: absolute;
+  position: ${(props) => props.position};
   top: 0;
   width: 100%;
   height: fit-content;
@@ -12,6 +12,45 @@ export const Nav = styled.nav`
   z-index: 15;
   opacity: 0;
   transform: translateY(-150px);
+
+  &.scroll_down {
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 1);
+
+    @media (max-width: 990px) {
+      position: absolute;
+    }
+
+    a {
+      color: black;
+    }
+
+    .anchortag {
+      color: black;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 1px;
+        background: black;
+        transition: width 0.3s;
+
+        @media (max-width: 990px) {
+          display: none;
+        }
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    h3 {
+      color: black;
+    }
+  }
 `;
 
 export const NavItems = styled.div`
@@ -37,6 +76,11 @@ export const Logo = styled.h3`
   font-size: 2.5rem;
   width: fit-content;
 
+  a {
+    text-decoration: none;
+    color: ${(props) => props.logoColor};
+  }
+
   @media (max-width: 990px) {
     font-size: 1.8rem;
     flex: 0;
@@ -61,7 +105,16 @@ export const ButtonContainer = styled.div`
     display: none;
   }
 
-  &:hover {
-    cursor: pointer;
+  a {
+    margin: 0;
+    padding: 0;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: ${(props) => props.rightIcons};
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
   }
 `;

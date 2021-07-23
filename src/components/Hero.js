@@ -9,17 +9,46 @@ import Etiquette from "../videos/etiquettepxl.mp4";
 import Button from "./Button";
 import { Instagram, Twitter, MessageCircle } from "react-feather";
 import { gsap, Power3 } from "gsap";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   let heroFadeIn = useRef(null);
+  let buttonFadeIn = useRef(null);
+  let divGrowth1 = useRef(null);
+  let divGrowth2 = useRef(null);
+  let twitter = useRef(null);
+  let instagram = useRef(null);
+  let messenger = useRef(null);
 
   useEffect(() => {
-    gsap.to(heroFadeIn, {
+    const heroContent = [heroFadeIn, buttonFadeIn];
+    gsap.to(heroContent, {
       duration: 0.5,
       y: 0,
       opacity: 1,
       ease: Power3.easeIn,
-      delay: 0.2,
+      delay: 0.5,
+      stagger: 0.5,
+    });
+
+    const divGrowth = [divGrowth1, divGrowth2];
+    gsap.to(divGrowth, {
+      duration: 0.5,
+      y: 0,
+      height: "150px",
+      opacity: 1,
+      ease: Power3.easeIn,
+      delay: 3,
+    });
+
+    const icons = [messenger, twitter, instagram];
+    gsap.to(icons, {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      ease: Power3.easeIn,
+      delay: 1.5,
+      stagger: 0.5,
     });
   }, []);
 
@@ -31,23 +60,60 @@ export default function Hero() {
             heroFadeIn = el;
           }}
         >
-          Fresh accessories for a <br />
-          brand new season.
+          Fresh accessories for a brand new season.
         </p>
-        <Button color="white" background="transparent" border="2px solid white">
-          OUR COLLECTION
-        </Button>
+        <Link to="/shop">
+          <Button
+            color="white"
+            background="transparent"
+            border="1px solid white"
+            ref={(el) => {
+              buttonFadeIn = el;
+            }}
+          >
+            OUR COLLECTION
+          </Button>
+        </Link>
       </HeroMotto>
       <HeroSocials>
-        <a href="/" target="_blank">
+        <a
+          href="/"
+          target="_blank"
+          alt="Messenger"
+          ref={(el) => {
+            messenger = el;
+          }}
+        >
           <MessageCircle />
         </a>
-        <div></div>
-        <a href="/" target="_blank">
+        <div
+          ref={(el) => {
+            divGrowth1 = el;
+          }}
+        ></div>
+        <a
+          href="/"
+          target="_blank"
+          alt="Twitter"
+          ref={(el) => {
+            twitter = el;
+          }}
+        >
           <Twitter />
         </a>
-        <div></div>
-        <a href="/" target="_blank">
+        <div
+          ref={(el) => {
+            divGrowth2 = el;
+          }}
+        ></div>
+        <a
+          href="/"
+          target="_blank"
+          alt="Instagram"
+          ref={(el) => {
+            instagram = el;
+          }}
+        >
           <Instagram />
         </a>
       </HeroSocials>

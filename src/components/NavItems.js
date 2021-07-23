@@ -1,25 +1,26 @@
 import styled from "styled-components";
-import { useRef, useEffect } from "react";
-
+import React, { useEffect, useRef } from "react";
 import { gsap, Power3 } from "gsap";
+import { Link } from "react-router-dom";
 
 export const MenuItems = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
   flex: 1;
-  opacity: 0;
-  transform: translateY(-100px);
+  opacity: 1;
+  justify-content: center;
 
   @media (max-width: 990px) {
     flex-direction: column;
-    background-color: #202020;
+    background-color: ${(props) => props.mobileMenuBackground};
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     padding: 2em 4em;
     height: fit-content;
+    transform: translateX(-100vw);
   }
 `;
 
@@ -27,7 +28,7 @@ export const MobileExtraItems = styled.div`
   margin: 0;
   padding: 0;
   display: none;
-  flex: 1;
+  /* flex: 1; */
 
   @media (max-width: 990px) {
     flex-direction: column;
@@ -36,13 +37,16 @@ export const MobileExtraItems = styled.div`
 `;
 
 export const Item = styled.p`
-  text-decoration: none;
   margin: 0;
   padding: 0;
-  color: white;
 
   @media (max-width: 990px) {
     width: fit-content;
+  }
+  // navbar underline animation
+  a {
+    text-decoration: none;
+    color: ${(props) => props.leftIcons};
   }
 
   &:nth-child(-n + 5)::after {
@@ -50,7 +54,7 @@ export const Item = styled.p`
     display: block;
     width: 0;
     height: 1px;
-    background: #fff;
+    background: ${(props) => props.itemHoverLineColor};
     transition: width 0.3s;
 
     @media (max-width: 990px) {
@@ -78,34 +82,123 @@ export const Item = styled.p`
   }
 `;
 
-const NavItems = ({ isMobile, closeMobileMenu }) => {
-  let navDiv = useRef(null);
+const NavItems = ({
+  state,
+  leftIcons,
+  itemHoverLineColor,
+  mobileMenuBackground,
+  mobileMenuItemColor,
+}) => {
+  // dom ref nodes for gsap animations
+  let menu = useRef(null);
+  let anchor1 = useRef(null);
+  let anchor2 = useRef(null);
+  let anchor3 = useRef(null);
+  let anchor4 = useRef(null);
+  let anchor5 = useRef(null);
+  let anchor6 = useRef(null);
+  let anchor7 = useRef(null);
 
   useEffect(() => {
-    gsap.to(navDiv, {
-      duration: 0.5,
-      opacity: 1,
-      y: 0,
-      ease: Power3.easeOut,
-    });
-  }, []);
-  console.log(navDiv);
-
+    if (state !== undefined) {
+      if (state.clicked === false || state.clicked === null) {
+        //closemenu
+        gsap.to(
+          [menu, anchor1, anchor2, anchor3, anchor4, anchor5, anchor6, anchor7],
+          {
+            duration: 1,
+            x: "-100%",
+            ease: Power3.out,
+            stagger: {
+              from: "center",
+              amount: 0.5,
+            },
+          }
+        );
+      } else if (
+        state.clicked === true ||
+        (state.clicked === true && state.initial === null)
+      ) {
+        gsap.to(
+          [menu, anchor1, anchor2, anchor3, anchor4, anchor5, anchor6, anchor7],
+          {
+            duration: 1,
+            x: "0%",
+            ease: Power3.out,
+            stagger: {
+              amount: 0.5,
+            },
+          }
+        );
+      }
+    }
+  });
   return (
     <MenuItems
-      ref={(el) => {
-        navDiv = el;
-      }}
+      ref={(el) => (menu = el)}
+      className="animation"
+      mobileMenuBackground={mobileMenuBackground}
+      mobileMenuItemColor={mobileMenuItemColor}
     >
       <MobileExtraItems>
-        <Item onClick={() => isMobile && closeMobileMenu()}>Account</Item>
-        <Item onClick={() => isMobile && closeMobileMenu()}>Search</Item>
-        <Item onClick={() => isMobile && closeMobileMenu()}>Shopping Cart</Item>
+        <Item
+          ref={(el) => (anchor1 = el)}
+          leftIcons={leftIcons}
+          itemHoverLineColor={itemHoverLineColor}
+        >
+          <Link to="/">Account</Link>
+        </Item>
+        <Item
+          ref={(el) => (anchor2 = el)}
+          leftIcons={leftIcons}
+          itemHoverLineColor={itemHoverLineColor}
+        >
+          <Link to="/">Search</Link>
+        </Item>
+        <Item
+          ref={(el) => (anchor3 = el)}
+          leftIcons={leftIcons}
+          itemHoverLineColor={itemHoverLineColor}
+        >
+          <Link to="/">Shopping Cart</Link>
+        </Item>
       </MobileExtraItems>
-      <Item onClick={() => isMobile && closeMobileMenu()}>Shop</Item>
-      <Item onClick={() => isMobile && closeMobileMenu()}>Lookbook</Item>
-      <Item onClick={() => isMobile && closeMobileMenu()}>About</Item>
-      <Item onClick={() => isMobile && closeMobileMenu()}>Story</Item>
+      <Item
+        ref={(el) => (anchor4 = el)}
+        leftIcons={leftIcons}
+        itemHoverLineColor={itemHoverLineColor}
+      >
+        <Link to="/shop" className="anchortag">
+          Shop
+        </Link>
+      </Item>
+      <Item
+        ref={(el) => (anchor5 = el)}
+        leftIcons={leftIcons}
+        itemHoverLineColor={itemHoverLineColor}
+      >
+        <Link to="/" className="anchortag">
+          Lookbook
+        </Link>
+      </Item>
+      <Item
+        ref={(el) => (anchor6 = el)}
+        leftIcons={leftIcons}
+        itemHoverLineColor={itemHoverLineColor}
+      >
+        <Link to="/" className="anchortag">
+          About
+        </Link>
+      </Item>
+      <Item
+        ref={(el) => (anchor7 = el)}
+        leftIcons={leftIcons}
+        itemHoverLineColor={itemHoverLineColor}
+      >
+        <Link to="/" className="anchortag">
+          Story
+        </Link>
+      </Item>
     </MenuItems>
   );
 };

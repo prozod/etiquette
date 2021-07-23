@@ -1,18 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import heroSection2 from "../images/heroSection2.jpg";
 import Button from "./Button";
 
 const Container = styled.section`
-  min-height: 668px;
+  min-height: ${(props) => props.minHeight};
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  background-image: url(${heroSection2});
+  background-image: url(${(props) => props.img});
   background-size: cover;
   margin-top: 8em;
-  margin-bottom: 3em;
   position: relative;
 
   &::before {
@@ -56,40 +54,50 @@ const Container = styled.section`
       &:before {
         content: "";
         background-color: white;
-        width: 0%;
+        width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
-        opacity: 0;
-        transform: scale(0.8);
+        opacity: 1;
         transition: all 0.2s ease-in-out;
       }
 
       &:hover::before {
-        width: 100%;
-        opacity: 1;
-        transform: scale(1);
+        width: 0%;
+        opacity: 0;
         transition: all 0.2s ease-in-out;
       }
 
       &:hover {
-        color: black;
-        transition-delay: 0.2s;
+        color: white;
+        transition-delay: 0.1s;
+        background-color: transparent;
       }
     }
   }
 `;
 
-export default function HeroSection2() {
+export default function HeroSection2({
+  title,
+  text,
+  buttontext,
+  bgimg,
+  height,
+}) {
   return (
-    <Container>
+    <Container img={bgimg} minHeight={height}>
       <div>
-        <h1>Classic Perfection</h1>
-        <p>Each piece is lovingly handmade in our studio warehouse.</p>
-        <Button color="white" background="transparent" border="1px solid white">
-          PURCHASE NOW
+        <h1>{title}</h1>
+        <p>{text}</p>
+        <Button
+          color="black"
+          background="transparent"
+          border="1px solid white"
+          visible
+        >
+          {buttontext}
         </Button>
       </div>
     </Container>

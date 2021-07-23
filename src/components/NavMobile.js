@@ -12,9 +12,12 @@ const MobileContainer = styled.nav`
 `;
 
 const Hamburger = styled.div`
-  background-color: red;
   width: 100%;
   height: 100%;
+
+  a {
+    color: ${(props) => props.mobileMenuItemColor};
+  }
 `;
 
 const ToggleButtons = styled.div`
@@ -22,25 +25,64 @@ const ToggleButtons = styled.div`
   position: relative;
 `;
 
-export default function NavMobile() {
-  const [openMenu, setOpenMenu] = useState();
+export default function NavMobile({
+  color,
+  mobileMenuBackground,
+  mobileMenuItemColor,
+}) {
+  const [menuOpen, setMenuOpen] = useState({
+    initial: false,
+    clicked: null,
+    name: <X />,
+  });
 
-  const closedMenu = (
-    <X size={32} color="white" onClick={() => setOpenMenu(!openMenu)} />
-  );
-  const openedMenu = (
-    <Menu size={32} color="white" onClick={() => setOpenMenu(!openMenu)} />
-  );
+  const [disabled, setDisabled] = useState(false);
 
-  const closeMobileMenu = () => setOpenMenu(false);
+  //figure out if menu button should be disabled (to prevent spamming)
+  const disableMenu = () => {
+    setDisabled(!disabled);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 1500);
+  };
+
+  const menuAnimation = () => {
+    disableMenu();
+    if (menuOpen.initial === false) {
+      setMenuOpen({
+        initial: null,
+        clicked: true,
+        name: <X />,
+      });
+      console.log("1");
+    } else if (menuOpen.clicked === true) {
+      setMenuOpen({
+        clicked: !menuOpen.clicked,
+      });
+      console.log("2");
+    } else if (menuOpen.clicked === false) {
+      setMenuOpen({
+        clicked: !menuOpen.clicked,
+      });
+      console.log("3");
+    }
+  };
 
   return (
     <MobileContainer>
-      <ToggleButtons>{openMenu ? closedMenu : openedMenu}</ToggleButtons>
-      <Hamburger>
-        {openMenu && (
-          <NavItems isMobile={true} closeMobileMenu={closeMobileMenu} />
+      <ToggleButtons>
+        {menuOpen.clicked === false || menuOpen.clicked === null ? (
+          <Menu color={color} disabled={disabled} onClick={menuAnimation} />
+        ) : (
+          <X color={color} disabled={disabled} onClick={menuAnimation} />
         )}
+      </ToggleButtons>
+      <Hamburger mobileMenuItemColor={mobileMenuItemColor}>
+        <NavItems
+          state={menuOpen}
+          leftIcons="white"
+          mobileMenuBackground={mobileMenuBackground}
+        />
       </Hamburger>
     </MobileContainer>
   );

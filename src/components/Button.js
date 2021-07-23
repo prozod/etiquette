@@ -9,6 +9,7 @@ const Button = styled.button`
   color: ${(props) => props.color};
   border: ${(props) => props.border};
   cursor: pointer;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
 `;
 
 export default Button;

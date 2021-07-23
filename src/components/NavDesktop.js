@@ -11,10 +11,10 @@ const Container = styled.div`
   }
 `;
 
-export default function NavDesktop() {
+export default function NavDesktop({ leftIcons, itemHoverLineColor }) {
   return (
     <Container>
-      <NavItems />
+      <NavItems leftIcons={leftIcons} itemHoverLineColor={itemHoverLineColor} />
     </Container>
   );
 }

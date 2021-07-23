@@ -24,7 +24,7 @@ export const HeroMotto = styled.div`
   width: 100%;
   height: 100%;
   font-size: 3rem;
-  margin: 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,8 +38,15 @@ export const HeroMotto = styled.div`
 
   p {
     text-align: center;
-    transform: translateY(50px);
+    transform: translateY(-50px);
     opacity: 0;
+    width: 40%;
+  }
+
+  span {
+    font-size: 1.25rem;
+    transform: translateY(-50px);
+    opacity: 1;
   }
 
   button {
@@ -47,6 +54,12 @@ export const HeroMotto = styled.div`
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    transform: translateY(-50px);
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
     &:before {
       content: "";
@@ -92,17 +105,20 @@ export const HeroSocials = styled.div`
     cursor: pointer;
     text-decoration: none;
     color: white;
-    transition: transform 0.2s ease;
+    transform: scale(0.8);
+    transition: all 0.2s ease;
+    opacity: 0;
 
     &:hover {
-      transform: scale(1.2);
+      transform: translateX(10px);
     }
   }
 
   div {
     background: white;
-    height: 150px;
+    height: 0px;
     width: 1px;
+    opacity: 0;
   }
 
   @media (max-width: 990px) {
