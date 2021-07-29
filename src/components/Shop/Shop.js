@@ -4,6 +4,7 @@ import Item from "./Item";
 import SyncLoader from "react-spinners/SyncLoader";
 import FilterSort from "../Utils/FilterSort";
 import SortLabel from "../Utils/SortLabel";
+import { API_URL, imageToUrl } from "../Utils/Urls";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Shop() {
@@ -18,7 +19,7 @@ export default function Shop() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch(`${process.env.REACT_APP_API_URL}/products`, {
+    fetch(`${API_URL}/products`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +42,7 @@ export default function Shop() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch(`${process.env.REACT_APP_API_URL}/categories`, {
+    fetch(`${API_URL}/categories`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -121,7 +122,7 @@ export default function Shop() {
                   <></>
                 )
               }
-              image={`${process.env.REACT_APP_API_URL}` + product.image.url}
+              image={`${imageToUrl(product.image)}`}
             />
           ))
         )}

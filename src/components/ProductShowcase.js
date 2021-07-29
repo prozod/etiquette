@@ -5,7 +5,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import gsap from "gsap";
 import { useIntersection } from "react-use";
 import { Link } from "react-router-dom";
-const URL = "http://localhost:1337";
+import { API_URL, imageToUrl } from "./Utils/Urls";
 
 const Container = styled.section`
   display: grid;
@@ -105,7 +105,7 @@ export default function ProductShowcase() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch("http://localhost:1337/products", {
+    fetch(`${API_URL}/products`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -171,7 +171,7 @@ export default function ProductShowcase() {
               <img
                 width="300px"
                 height="300px"
-                src={URL + product.image.url}
+                src={`${imageToUrl(product.image)}`}
                 alt={product.name}
               />
               <div>
@@ -187,19 +187,6 @@ export default function ProductShowcase() {
           </Link>
         ))
       )}
-
-      {/* <Item className="elementFade">
-        <img src={product1} alt="necklace" />
-        <div>
-          <span className="itemTag">
-            <p>Adeline Hanging Studs in Gold</p>
-            <h4>$125.00</h4>
-          </span>
-          <span className="addToCart">
-            <ShoppingCart color="#363636" />
-          </span>
-        </div>
-      </Item> */}
     </Container>
   );
 }

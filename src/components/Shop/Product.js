@@ -10,6 +10,7 @@ import {
   TOUCH_ACTIVATION,
 } from "react-image-magnifiers";
 import { v4 as uuidv4 } from "uuid";
+import { API_URL, imageToUrl } from "../Utils/Urls";
 
 const Container = styled.section`
   margin: 0 auto;
@@ -274,7 +275,7 @@ export default function Product() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch(`${process.env.REACT_APP_API_URL}/products/`, {
+    fetch(`${API_URL}/products/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -296,7 +297,7 @@ export default function Product() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch(`${process.env.REACT_APP_API_URL}/products`, {
+    fetch(`${API_URL}/products`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -414,9 +415,7 @@ export default function Product() {
                 <Link to={`/shop/product/${product.url}`} key={uuidv4()}>
                   <div className="product">
                     <img
-                      src={
-                        `${process.env.REACT_APP_API_URL}` + product.image.url
-                      }
+                      src={`${imageToUrl(product.image)}`}
                       alt={product.name}
                     />
                     <p>{product.name}</p>
