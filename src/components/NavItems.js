@@ -106,12 +106,12 @@ const NavItems = ({
         gsap.to(
           [menu, anchor1, anchor2, anchor3, anchor4, anchor5, anchor6, anchor7],
           {
-            duration: 1,
-            x: "-100%",
+            duration: 0.5,
+            x: "-100vh",
             ease: Power3.out,
             stagger: {
               from: "center",
-              amount: 0.5,
+              amount: 0.2,
             },
           }
         );
@@ -122,17 +122,18 @@ const NavItems = ({
         gsap.to(
           [menu, anchor1, anchor2, anchor3, anchor4, anchor5, anchor6, anchor7],
           {
-            duration: 1,
-            x: "0%",
+            duration: 0.5,
+            x: "0",
             ease: Power3.out,
             stagger: {
-              amount: 0.5,
+              amount: 0.2,
             },
           }
         );
       }
     }
   });
+
   return (
     <MenuItems
       ref={(el) => (menu = el)}

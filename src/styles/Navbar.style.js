@@ -27,9 +27,6 @@ export const Nav = styled.nav`
 
     a {
       color: black;
-      @media (max-width: 990px) {
-        color: white;
-      }
     }
 
     .anchortag {

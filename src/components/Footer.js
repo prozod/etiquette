@@ -24,6 +24,10 @@ const Splitter = styled.div`
   margin: 0 auto;
   width: ${(props) => props.width};
   padding: 2.5em 0;
+
+  @media (max-width: 1300px) {
+    width: 80%;
+  }
 `;
 
 const Newsletter = styled.div`
@@ -35,7 +39,19 @@ const Newsletter = styled.div`
   height: 100%;
   flex: 1;
 
-  h4 {
+  // hide label but keep it there for screenreaders
+  label {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .newsletter-text-title {
     letter-spacing: 3px;
     font-weight: 600;
     font-size: 1.5rem;
@@ -45,7 +61,8 @@ const Newsletter = styled.div`
     width: 30%;
 
     @media (max-width: 1024px) {
-      width: 90%;
+      width: 100%;
+      font-size: 1rem;
     }
   }
 
@@ -72,6 +89,7 @@ const Newsletter = styled.div`
       font-weight: 500;
       font-size: 1rem;
       padding: 0px 10px;
+      padding-top: 15px;
       outline: none;
       color: #5b5b5b;
       display: flex;
@@ -91,6 +109,7 @@ const Newsletter = styled.div`
       font-family: "Work Sans", sans-serif;
       font-weight: 500;
       font-size: 1rem;
+      cursor: pointer;
     }
   }
 `;
@@ -104,9 +123,10 @@ const FooterContainer = styled.div`
 
   @media (max-width: 1024px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  h6 {
+  p {
     font-size: 0.85rem;
     font-weight: 400;
 
@@ -116,9 +136,11 @@ const FooterContainer = styled.div`
   }
 
   .links {
+    display: flex;
     margin: 0 0.5em;
 
     @media (max-width: 1024px) {
+      flex-direction: column;
       margin: 0;
       margin-bottom: 2em;
     }
@@ -151,19 +173,25 @@ export default function Footer({ bgimg, width }) {
     <Container img={bgimg}>
       <Splitter width={width}>
         <Newsletter>
-          <h4>Newsletter</h4>
+          <p className="newsletter-text-title">Newsletter</p>
           <p>
             Subscribe to get special offers, free giveaways, and
             once-in-a-lifetime deals.
           </p>
           <div>
-            <textarea></textarea>
+            <label htmlFor="newsletter">Newsletter</label>
+            <textarea
+              name="newsletter"
+              id="newsletter"
+              aria-labelledby="newsletter"
+            ></textarea>
+
             <button>JOIN</button>
           </div>
         </Newsletter>
 
         <FooterContainer>
-          <h6>© ANDREAS WOLFF 2021</h6>
+          <p>© ANDREAS WOLFF 2021</p>
           <div className="links">
             <a href="/" alt="privacy&cookies">
               Privacy & Cookies
@@ -189,10 +217,10 @@ export default function Footer({ bgimg, width }) {
           </div>
 
           <div className="payments">
-            <img src={visa} alt="visa" />
-            <img src={paypal} alt="paypal" />
-            <img src={mastercard} alt="mastercard" />
-            <img src={amex} alt="amex" />
+            <img width="40px" height="30px" src={visa} alt="visa" />
+            <img width="40px" height="30px" src={paypal} alt="paypal" />
+            <img width="40px" height="30px" src={mastercard} alt="mastercard" />
+            <img width="40px" height="30px" src={amex} alt="amex" />
           </div>
         </FooterContainer>
       </Splitter>

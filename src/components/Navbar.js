@@ -69,7 +69,6 @@ export default function NavContainer({
       }
     }
 
-    console.log(doc.classList.contains("scroll_down"));
     if (
       currentPos < lastPos.current &&
       !doc.classList.contains("scroll_down")
@@ -107,13 +106,13 @@ export default function NavContainer({
         </Logo>
         <NavButtons>
           <ButtonContainer rightIcons={rightIcons}>
-            <a href="/" alt="User Panel">
+            <a href="/" alt="User Profile" aria-label="User Profile">
               <User />
             </a>
-            <a href="/" alt="Search">
+            <a href="/" alt="Search" aria-label="Search">
               <Search />
             </a>
-            <a href="/" alt="Cart">
+            <a href="/" alt="ShoppingCart" aria-label="Shopping Cart">
               <ShoppingBag />
             </a>
           </ButtonContainer>

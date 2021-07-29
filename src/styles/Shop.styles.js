@@ -8,9 +8,20 @@ export const Container = styled.section`
   width: 60%;
   font-family: "Work Sans", sans-serif;
   margin-top: 104px;
+  transition: all 0.2s ease;
+
+  @media (max-width: 1300px) {
+    width: 80%;
+  }
 
   @media (max-width: 1024px) {
     width: 90%;
+  }
+
+  .loader {
+    padding: 3em 0;
+    width: 100%;
+    height: 100%;
   }
 
   .separator {
@@ -31,19 +42,22 @@ export const Container = styled.section`
   }
 `;
 
-export const Filter = styled.div`
+export const Filters = styled.div`
   display: flex;
-  padding: 1em 0;
-  font-size: 1rem;
+  align-items: center;
 `;
 
 export const Products = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-gap: 10px 5px;
-  place-items: center;
+  grid-gap: 10px 1.5px;
+
   grid-auto-flow: auto;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin: 1em 0;
+
+  @media (max-width: 1024px) {
+    place-items: center;
+  }
 `;

@@ -77,12 +77,14 @@ export default function Hero() {
       </HeroMotto>
       <HeroSocials>
         <a
-          href="/"
+          aria-label="Messenger"
+          href="https://whatsapp.com"
           target="_blank"
           alt="Messenger"
           ref={(el) => {
             messenger = el;
           }}
+          rel="noreferrer"
         >
           <MessageCircle />
         </a>
@@ -92,8 +94,10 @@ export default function Hero() {
           }}
         ></div>
         <a
-          href="/"
+          aria-label="Twitter"
+          href="https://twitter.com"
           target="_blank"
+          rel="noreferrer"
           alt="Twitter"
           ref={(el) => {
             twitter = el;
@@ -107,8 +111,10 @@ export default function Hero() {
           }}
         ></div>
         <a
-          href="/"
+          aria-label="Instagram"
+          href="https://instagram.com"
           target="_blank"
+          rel="noreferrer"
           alt="Instagram"
           ref={(el) => {
             instagram = el;

@@ -41,6 +41,10 @@ export const HeroMotto = styled.div`
     transform: translateY(-50px);
     opacity: 0;
     width: 40%;
+
+    @media (max-width: 990px) {
+      width: 70%;
+    }
   }
 
   span {

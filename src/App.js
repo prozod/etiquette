@@ -10,7 +10,11 @@ import backtobasics from "./images/backtobasics.jpg";
 import footer from "./images/footer.jpg";
 import Footer from "./components/Footer";
 import Shop from "./components/Shop/Shop";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Product from "./components/Shop/Product";
+import ScrollTop from "./components/Utils/ScrollTop";
+import NotFound from "./NotFound";
+import { AnimatedSwitch } from "react-router-transition";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 function App() {
@@ -18,7 +22,13 @@ function App() {
     <Router>
       <div className="App">
         <GlobalStyle whiteColor />
-        <Switch>
+        <ScrollTop />
+        <AnimatedSwitch
+          runOnMount={true}
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+        >
           <Route exact path="/">
             <NavContainer
               position="absolute"
@@ -51,7 +61,7 @@ function App() {
             <Footer bgimg={footer} width="80%" />
           </Route>
 
-          <Route path="/shop">
+          <Route exact path="/shop">
             <NavContainer
               position="absolute"
               logoColor="black"
@@ -65,7 +75,24 @@ function App() {
             <Shop />
             <Footer bgimg={footer} width="60%" />
           </Route>
-        </Switch>
+
+          <Route exact path="/shop/product/:id">
+            <NavContainer
+              position="absolute"
+              logoColor="black"
+              rightIcons="black"
+              leftIcons="black"
+              color="black"
+              itemHoverLineColor="black"
+              mobileMenuBackground="white"
+              mobileMenuItemColor="black"
+            />
+            <Product />
+            <Footer bgimg={footer} width="60%" />
+          </Route>
+
+          <Route path="*" component={NotFound} />
+        </AnimatedSwitch>
       </div>
       <CookieConsent
         // debug={true}

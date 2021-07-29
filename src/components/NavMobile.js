@@ -33,7 +33,6 @@ export default function NavMobile({
   const [menuOpen, setMenuOpen] = useState({
     initial: false,
     clicked: null,
-    name: <X />,
   });
 
   const [disabled, setDisabled] = useState(false);
@@ -52,19 +51,15 @@ export default function NavMobile({
       setMenuOpen({
         initial: null,
         clicked: true,
-        name: <X />,
       });
-      console.log("1");
     } else if (menuOpen.clicked === true) {
       setMenuOpen({
         clicked: !menuOpen.clicked,
       });
-      console.log("2");
     } else if (menuOpen.clicked === false) {
       setMenuOpen({
         clicked: !menuOpen.clicked,
       });
-      console.log("3");
     }
   };
 
