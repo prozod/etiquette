@@ -69,7 +69,13 @@ export default function Item({ name, price, image, url, discount }) {
   return (
     <Container>
       <Link to={url}>
-        <img width="250px" height="250px" src={image} alt={name} />
+        <img
+          width="250px"
+          height="250px"
+          src={image}
+          alt={name}
+          loading="lazy"
+        />
         <p className="productname">{name}</p>
         <div className="prices">
           <p className="discount">{discount}</p>

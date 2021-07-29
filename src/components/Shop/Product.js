@@ -106,7 +106,7 @@ const ProductContainer = styled.div`
       }
 
       .discount {
-        color: #d75454;
+        color: #ca4545;
         font-weight: 600;
         display: none;
         font-size: 1.25rem;
@@ -115,7 +115,7 @@ const ProductContainer = styled.div`
 
         &:before {
           content: "SALE";
-          background-color: #d75454;
+          background-color: #ca4545;
           color: white;
           padding: 0 5px;
           width: fit-content;
@@ -412,8 +412,11 @@ export default function Product() {
                 <Link to={`/shop/product/${product.url}`} key={uuidv4()}>
                   <div className="product">
                     <img
+                      width="220px"
+                      height="220px"
                       src={`${imageToUrl(product.image)}`}
                       alt={product.name}
+                      loading="lazy"
                     />
                     <p>{product.name}</p>
                   </div>

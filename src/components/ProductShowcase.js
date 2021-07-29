@@ -165,7 +165,7 @@ export default function ProductShowcase() {
           <MoonLoader size={40} loading={loading} />
         </div>
       ) : (
-        products.slice(8, 14).map((product) => (
+        products.slice(9, 15).map((product) => (
           <Link to={`/shop/product/${product.url}`} key={product.name}>
             <Item className="elementFade">
               <img
