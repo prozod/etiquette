@@ -1,7 +1,13 @@
 {
   "headers": [
     {
-      "Cache-Control": "public, max-age=259200"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=259200, immutable"
+        }
+      ]
     }
   ]
 }
