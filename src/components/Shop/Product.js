@@ -328,12 +328,9 @@ export default function Product() {
         <ProductContainer>
           <div className="rightside">
             <GlassMagnifier
-              imageSrc={
-                `${process.env.REACT_APP_API_URL}` +
-                products?.image_showcase?.url
-              }
+              imageSrc={`${imageToUrl(products.image_showcase)}`}
               imageAlt={products.name}
-              largeImageSrc={URL + products?.image_showcase?.url}
+              largeImageSrc={`${imageToUrl(products.image_showcase)}`}
               mouseActivation={MOUSE_ACTIVATION.CLICK}
               touchActivation={TOUCH_ACTIVATION.TAP}
               magnifierBorderColor="rgba(255, 255, 255, .5)"
