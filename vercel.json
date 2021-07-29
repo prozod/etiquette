@@ -1,8 +1,7 @@
 {
   "headers": [
     {
-      "key": "Cache-Control",
-      "value": "public, max-age=259200"
+      "Cache-Control": "public, max-age=259200"
     }
   ]
 }
