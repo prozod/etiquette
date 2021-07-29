@@ -1,13 +1,8 @@
 {
   "headers": [
     {
-      "source": "/shop",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=259200"
-        }
-      ]
+      "key": "Cache-Control",
+      "value": "public, max-age=259200"
     }
   ]
 }
