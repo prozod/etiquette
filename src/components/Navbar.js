@@ -101,12 +101,17 @@ export default function NavContainer({
           leftIcons={leftIcons}
           itemHoverLineColor={itemHoverLineColor}
         />
-        <Logo logoColor={logoColor}>
+        <Logo logoColor={logoColor} className="logo">
           <Link to="/">Etiquette</Link>
         </Logo>
         <NavButtons>
           <ButtonContainer rightIcons={rightIcons}>
-            <a href="/" alt="User Profile" aria-label="User Profile">
+            <a
+              href="/"
+              alt="User Profile"
+              aria-label="User Profile"
+              className="logo"
+            >
               <User />
             </a>
             <a href="/" alt="Search" aria-label="Search">
