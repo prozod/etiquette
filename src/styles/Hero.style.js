@@ -114,7 +114,7 @@ export const HeroSocials = styled.div`
     opacity: 0;
 
     &:hover {
-      transform: translateX(10px);
+      transform: scale(1.2) !important;
     }
   }
 

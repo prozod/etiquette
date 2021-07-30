@@ -25,16 +25,8 @@ export const Nav = styled.nav`
       background-color: transparent;
     }
 
-    a {
-      color: black;
-    }
-
     .anchortag {
       color: black;
-
-      @media (max-width: 990px) {
-        color: white;
-      }
 
       &::after {
         content: "";

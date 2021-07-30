@@ -28,7 +28,7 @@ export const MobileExtraItems = styled.div`
   margin: 0;
   padding: 0;
   display: none;
-  /* flex: 1; */
+  flex: 1;
 
   @media (max-width: 990px) {
     flex-direction: column;

@@ -11,9 +11,13 @@ const Container = styled.footer`
   background-position: center;
   background-image: url(${(props) => props.img});
   width: 100%;
-  min-height: 720px;
+  min-height: 500px;
   flex: 1;
   font-family: "Work Sans", sans-serif;
+
+  @media (max-width: 1024px) {
+    min-height: 550px;
+  }
 `;
 
 const Splitter = styled.div`
@@ -144,15 +148,16 @@ const FooterContainer = styled.div`
       margin: 0;
       margin-bottom: 2em;
     }
+
     a {
+      justify-content: space-evenly;
       color: #5b5b5b;
       text-decoration: none;
       font-size: 0.85rem;
       position: relative;
+      white-space: nowrap;
+      margin-right: 10px;
 
-      &:nth-child(n) {
-        margin-right: 1em;
-      }
       &:hover {
         text-decoration: underline;
       }
