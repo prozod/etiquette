@@ -63,17 +63,17 @@ export default function Shop() {
   const sortParameters = [["Random"], ["Price (asc.)"], ["Price (desc.)"]];
 
   const filterCategory = (argument, match) => {
-    const categories = argument.map((arg) => arg.categories);
-    const looper = [];
-    for (let i = 0; i < categories.length; i++) {
-      for (let category of categories[i]) {
+    let looper = [];
+    for (let i = 0; i < argument.length; i++) {
+      for (let category of argument[i].categories) {
         if (category.title === match) {
-          looper.push(argument.filter((arg) => arg.id === i + 1));
+          if (argument[i].categories.includes(category)) {
+            looper.push(argument[i]);
+          }
         }
       }
     }
-
-    setFilteredProducts(looper.flat());
+    setFilteredProducts(looper);
   };
 
   return (

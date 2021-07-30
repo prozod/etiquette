@@ -1,4 +1,6 @@
-export const API_URL = process.env.REACT_APP_API_URL || "http://localhost:1337";
+export const API_URL =
+  process.env.REACT_APP_API_URL ||
+  "https://etiquette-ecommerce-demo.herokuapp.com";
 
 export const imageToUrl = (image) => {
   if (!image) {

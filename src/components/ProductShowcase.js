@@ -165,27 +165,31 @@ export default function ProductShowcase() {
           <MoonLoader size={40} loading={loading} />
         </div>
       ) : (
-        products.slice(9, 15).map((product) => (
-          <Link to={`/shop/product/${product.url}`} key={product.name}>
-            <Item className="elementFade">
-              <img
-                width="300px"
-                height="300px"
-                src={`${imageToUrl(product.image)}`}
-                alt={product.name}
-              />
-              <div>
-                <span className="itemTag">
-                  <p className="productname">{product.name}</p>
-                  <p className="pricetag">${product.price}</p>
-                </span>
-                <span className="addToCart">
-                  <ShoppingCart color="#363636" />
-                </span>
-              </div>
-            </Item>
-          </Link>
-        ))
+        products.map((product) => {
+          if (product.trending === true)
+            return (
+              <Link to={`/shop/product/${product.url}`} key={product.name}>
+                <Item className="elementFade">
+                  <img
+                    width="300px"
+                    height="300px"
+                    src={`${imageToUrl(product.image)}`}
+                    alt={product.name}
+                  />
+                  <div>
+                    <span className="itemTag">
+                      <p className="productname">{product.name}</p>
+                      <p className="pricetag">${product.price}</p>
+                    </span>
+                    <span className="addToCart">
+                      <ShoppingCart color="#363636" />
+                    </span>
+                  </div>
+                </Item>
+              </Link>
+            );
+          return null;
+        })
       )}
     </Container>
   );
