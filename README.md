@@ -1,5 +1,7 @@
 ## Etiquette | Boutique Jewelry Store 
-#### What is it?
+![image](https://res.cloudinary.com/andreastx/image/upload/v1637962902/etiquette_9fd34cc6f3.png)
+
+## What is this?
 Etiquette is a theme/website concept developed for a fictive e-commerce store. This project came to life simply because I was trying to teach myself how to work with a Headless CMS.
 
 
